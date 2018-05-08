@@ -27,4 +27,4 @@ This script uses git, maven, jdk and sam, see https://github.com/awslabs/aws-ser
 ```bash
  curl -sSL https://raw.githubusercontent.com/tmieulet/script/master/validate-sam.sh | sh
 ```
-Ok the service http://localhost:3000/pets is up.
+Ok if the service http://localhost:3000/pets is up.
