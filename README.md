@@ -4,7 +4,7 @@
 To install docker, awscli, ...
 ```bash
 curl -sSL https://raw.githubusercontent.com/tmieulet/script/master/dev.sh -o dev.sh
-sh dev.sh
+bash dev.sh
 ```
 ### Limitations
 The docker script can fail and display "E: Package 'docker-ce' has no installation candidate". 
