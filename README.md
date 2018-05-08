@@ -23,7 +23,7 @@ Please see the installation instructions : https://docs.docker.com/engine/instal
 
 
 ## validate-sam
-This script uses git, maven, jdk and sam.
+This script uses git, maven, jdk and sam, see https://github.com/awslabs/aws-serverless-java-container.
 ```bash
  curl -sSL https://raw.githubusercontent.com/tmieulet/script/master/validate-sam.sh | sh
 ```
