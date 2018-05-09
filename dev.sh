@@ -54,6 +54,16 @@ function FONC_INSTALL ()
 	   fi
 	fi
   
+    if ! hash pip 2>/dev/null; then
+	   echo "Install pip ? [y/n]"
+	   read -r RESPONSE
+	   if FONCYES "$RESPONSE"; then
+	    apt install python-pip
+	    # update to the last version
+	    pip install --upgrade pip
+	   fi
+	fi
+  
   if ! hash aws 2>/dev/null; then
 	   echo "Install awscli ? [y/n]"
 	   read -r RESPONSE
@@ -66,9 +76,8 @@ function FONC_INSTALL ()
     echo "Install aws-sam-local ? [y/n]"
 	  read -r RESPONSE
 	  if FONCYES "$RESPONSE"; then
-     npm config set unsafe-perm=true
-     npm install -g aws-sam-local
-   fi
+            pip install --user aws-sam-cli
+          fi
   fi
   
 
