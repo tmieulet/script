@@ -49,18 +49,23 @@ function FONC_INSTALL ()
 	   read -r RESPONSE
 	   if FONCYES "$RESPONSE"; then
 	    apt install -y npm
+	    # update npm
+	    npm i -g npm
       npm install -g n
       n latest
 	   fi
 	fi
   
     if ! hash pip 2>/dev/null; then
-	   echo "Install pip ? [y/n]"
+	   echo "Install pip (required for aws-sam-cli, ..) ? [y/n]"
 	   read -r RESPONSE
 	   if FONCYES "$RESPONSE"; then
-	    apt install python-pip
-	    # update to the last version
-	    pip install --upgrade pip
+	    apt install -y python-pip
+	    # update to the last version (bad idea)
+	    # keep 9.0.1-2 : https://github.com/pypa/pip/issues/5240
+	    # pip install --upgrade pip
+	    
+	    export PATH=~/.local/bin:$PATH
 	   fi
 	fi
   
@@ -68,7 +73,9 @@ function FONC_INSTALL ()
 	   echo "Install awscli ? [y/n]"
 	   read -r RESPONSE
 	   if FONCYES "$RESPONSE"; then
-	     apt install -y   awscli
+	     # apt install -y   awscli
+	     pip install awscli --upgrade --user
+	     aws --version
 	   fi
 	fi
   
@@ -77,9 +84,18 @@ function FONC_INSTALL ()
 	  read -r RESPONSE
 	  if FONCYES "$RESPONSE"; then
             pip install --user aws-sam-cli
+	    sam --version
+	    pip install --user --upgrade aws-sam-cli
           fi
   fi
-  
+  if ! hash localstack 2>/dev/null; then
+    echo "Install localstack ? [y/n]"
+	  read -r RESPONSE
+	  if FONCYES "$RESPONSE"; then
+            pip install --user localstack
+	    localstack start --docker
+          fi
+  fi
 
 }
 
