@@ -98,8 +98,9 @@ RESULT=""
 	    RESULT="$RESULT\n localstack start --docker"
           fi
   fi
-  
-echo $RESULT
+# echo \n doesn't print a newline
+# printf has more consistent behavior than echo. The behavior of echo varies greatly between different versions.
+printf  $RESULT
 }
 
 usage()
