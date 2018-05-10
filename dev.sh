@@ -104,16 +104,19 @@ echo $RESULT
 
 usage()
 {
-    echo "usage: dev.sh [[[-y] [-i]] | [-h]]"
+    echo "usage: dev.sh [[[-y] [-i] [-v]] | [-h]]"
 }
 
 interactive=
 yesToAll=
+validate=
 while [ "$1" != "" ]; do
     case $1 in
         -y | --yesToAll )       yesToAll=1
                                 ;;
         -i | --interactive )    interactive=1
+                                ;;
+        -v | --validate )       validate=1
                                 ;;
         -h | --help )           usage
                                 exit
@@ -126,3 +129,7 @@ while [ "$1" != "" ]; do
 done
 
 FONC_INSTALL
+
+if [ "$validate" = "1" ]; then
+	curl -sSL https://raw.githubusercontent.com/tmieulet/script/master/validate-sam.sh | sh
+fi
