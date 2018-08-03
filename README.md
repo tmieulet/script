@@ -28,3 +28,11 @@ This script uses git, maven, jdk and sam, see https://github.com/awslabs/aws-ser
  curl -sSL https://raw.githubusercontent.com/tmieulet/script/master/validate-sam.sh | sh
 ```
 Ok if the service http://localhost:3000/pets is up.
+
+## validate-docker
+The Docker Bench for Security is a script that checks for dozens of common best-practices around deploying Docker containers in production.
+```bash
+git clone https://github.com/docker/docker-bench-security.git
+cd docker-bench-security
+sudo sh docker-bench-security.sh
+```
